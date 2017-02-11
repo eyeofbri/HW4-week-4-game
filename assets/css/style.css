@@ -1,0 +1,534 @@
+:root {
+	/*storing text shadow as var for ease of use*/
+  	--starText: -0.5vmin 0.5vmin 0.5vmin #ffaa06, -0.5vmin -0.5vmin 0.5vmin #ffaa06, 0.5vmin -0.5vmin 0.5vmin #ffaa06, 0.5vmin 0.5vmin 0.5vmin #ffaa06;
+	--introTextTime: 6s;
+	--selectionTextTime: 1s;	/*18s;*/
+}
+
+
+.no-touch{
+	-webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.hide{
+	display: none;
+	opacity: 0;
+}
+
+
+
+body{ 
+	background-color: black;
+}
+
+
+.wrapper {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	/*background-color: #fff;*/
+}
+
+#gameContainer{
+	background: rgba(0,0,0,1);
+	height: 100vh;
+	margin: 0 auto;
+	overflow: hidden;
+	width: 100vw;
+}
+
+/*SPACE BG LAYERS*/
+#gameBG_H {
+	margin: 0 auto;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+#gameBG_H div{
+	width: 500%;
+ 	height: 500%;
+ 	margin:0 auto;
+ 	position: absolute;
+ 	top: -250%;
+  	left: -250%;
+	/*background: rgba(0,0,0,0) url("../images/bg.png");*/
+	transition: all .5s ease-in-out;
+	border: 2px solid red;
+}
+#gameBG_H div:nth-child(1){
+	background-size: auto 8%;
+	opacity: 1;
+	-webkit-animation: space_rotate_anim 1000s linear infinite;
+  	animation: space_rotate_anim 1000s linear infinite;
+  	background: url("../images/bg.png");
+}
+#gameBG_H div:nth-child(2){
+	background-size: auto 12%;
+	opacity:.25;
+	-webkit-animation: space_rotate_anim 800s linear reverse infinite;
+  	animation: space_rotate_anim 800s linear reverse infinite;
+  	background: url("../images/bg.png");
+  	background-position: -20% center;
+}
+
+@keyframes space_rotate_anim {
+  100% { transform: rotate(360deg); }
+}
+
+
+
+#gameTitle{
+    margin:0 auto;
+    position: absolute;
+    width: 100%;
+    top:30%;
+    text-align: center;
+}
+
+
+.alertText_Wrapper {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	/*background-color: #fff;*/
+	z-index: 1000;
+	overflow: hidden;
+	top: 20%;
+}
+#alertText{
+	width: 50%;
+	height: 50%;
+	background-color: #333;
+	z-index: 1000;
+	margin:0 auto;
+	border-radius: 20px;
+}
+
+
+
+/*/////////////////////////////////////////////*/
+/* STAR WARS TEXT, INTRO TEXT*/
+/*/////////////////////////////////////////////*/
+
+.introTitle_Animate_IN:after{
+	transition: all .5s ease-in-out;
+	white-space: pre;
+	content: "";
+	-webkit-animation: introTitleTXT_IN_anim var(--introTextTime) linear forwards,
+	mainTitleTXT_IN_anim 12s linear forwards var(--introTextTime);
+  	animation: introTitleTXT_IN_anim var(--introTextTime) linear forwards,
+  	mainTitleTXT_IN_anim 12s linear forwards var(--introTextTime);
+}
+
+@keyframes introTitleTXT_IN_anim {
+  0%{ 
+  	  line-height: 8vmin;
+  	  font-family:sans-serif;
+  	  color:#24daf4;
+  	  content: "Some time ago in a div #far, \a .far .away...";
+  	  font-size: 7vmin;
+  	  opacity: 0;
+  	  text-align: left;
+  	  float:left;
+  	  margin-left: 6vmin;
+  }
+  10%,90% { opacity: 1; }
+  100% { 
+  	  line-height: 8vmin;
+  	  font-family:sans-serif;
+  	  color:#24daf4;
+	  content: "Some time ago in a div #far, \a .far .away...";
+  	  font-size: 7vmin; 
+  	  opacity: 0;
+  	  text-align: left;
+  	  float:left;
+  	  margin-left: 6vmin;
+  }
+}
+
+@keyframes mainTitleTXT_IN_anim {
+  0%{ 
+	letter-spacing: -2vmin;
+    line-height: 13vmin;
+	text-shadow: var(--starText);
+	font-family: 'Poller One', cursive;
+	content: "BRIAN\a WARS";
+  	font-size: 20vmin; 
+  	opacity: 0;
+  	color: #000;
+  	float:none;
+  	margin-left: 0px;
+  }
+  10%,90% { opacity: 1; }
+  100% { 
+	letter-spacing: -2vmin;
+    line-height: 13vmin;
+	text-shadow: var(--starText);
+	font-size: 15vmin;
+	font-family: 'Poller One', cursive;
+	content: "BRIAN\a WARS";
+  	opacity: 0;
+  	color: #000;
+  	float:none;
+	margin-left: 0px;
+  }
+}
+
+
+
+/*/////////////////////////////////////////////*/
+/* STAR WARS, SLANTED TEXT*/
+/*/////////////////////////////////////////////*/
+
+.slantedText_Wrapper {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	/*background-color: #fff;*/
+}
+.slantedText_H_outer {
+	width: 60%;
+	margin: 0 auto;
+    height: -100%;
+    -webkit-perspective: 90px; /* Chrome, Safari, Opera  */
+    perspective: 90px;
+}
+.slantedText_H_inner {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  color: #ffaa06;
+  -webkit-transform: rotateX(100deg); /* Chrome, Safari, Opera  */
+  transform: rotateX(100deg);
+}
+.slantedText_H_inner div {
+	font-family: sans-serif;
+	text-align: left;
+	line-height: 1em;
+	font-size: 1em;
+}
+
+
+
+
+
+
+/*/////////////////////////////////////////////*/
+/* CHARACTER CARDS DISLAY*/
+/*/////////////////////////////////////////////*/
+
+
+#characterSelect_H {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #444856;
+	background-image: url("../images/concrete_seamless.png");
+	opacity: 0;
+	-webkit-animation: charSelect_IN_anim 5s linear forwards var(--selectionTextTime);
+  	animation: charSelect_IN_anim 5s linear forwards var(--selectionTextTime);
+}
+.characterSelect_row {
+	display: flex;
+	width: 90%;
+	height: 25vh;
+	margin: 0 auto;
+	margin-top: 10vh;
+}
+.characterSelect_row:nth-of-type(2) {
+	margin-top: 2.5vh;
+}
+.characterSelect_row:nth-of-type(1):before {
+	content: "CHOOSE YOUR FIGHTER";
+	font-style: italic;
+	font-size: 6vmin;
+	position: absolute;
+	margin: 0 auto;
+	width: 100%;
+	margin-top: -7vh;
+	left:0px;
+	text-align: center;
+	font-family: 'Poller One', cursive;
+	color: white;
+	text-shadow: 2px 2px 10px #000, -2px 2px 10px #000;
+}
+
+
+
+/*/////////////////////////////////////////////*/
+/* CHARACTER "CARDS"*/
+/*/////////////////////////////////////////////*/
+
+.charCard {
+	margin:0 auto;
+	width: 22%;
+	height: 25vh;
+	background-color: rgba(0,0,0,0.5);
+	border: 1vh inset rgba(105,111,135,0.9);
+	overflow: hidden;
+	/*margin-left: 2vh;*/
+	border-radius: 1vh;
+	padding: 0;
+	position: relative;
+	background-size: cover;
+	background-position:  center;
+	background-repeat: no-repeat;
+	box-shadow: inset 2px 2px 20px #000, inset -2px 2px 20px #000;
+	transition: .3s ease-in-out;
+}
+.p1_Selector .charCard:focus{
+	box-shadow: inset 2px 2px 20px #000, inset -2px 2px 20px #000,
+	-2px -2px 20px #67FF00, 2px -2px 20px #67FF00, -2px 2px 20px #67FF00, 2px 2px 10px #67FF00;
+}
+.p2_Selector .charCard:focus{
+	box-shadow: inset 2px 2px 20px #000, inset -2px 2px 20px #000,
+	-2px -2px 20px #ff0000, 2px -2px 20px #ff0000, -2px 2px 20px #ff0000, 2px 2px 10px #ff0000;
+}
+.charCard:nth-of-type(1){
+	background-image: url("../images/characters/heads/bobaFett_head.png");
+}
+.charCard:nth-of-type(2){
+	background-image: url("../images/characters/heads/chewbacca_head.png");
+}
+.charCard:nth-of-type(3){
+	background-image: url("../images/characters/heads/darthSidious_head.png");
+}
+.charCard:nth-of-type(4){
+	background-image: url("../images/characters/heads/darthVader_head.png");
+}
+.characterSelect_row:nth-of-type(2) .charCard:nth-of-type(1){
+	background-image: url("../images/characters/heads/lukeSkywalker_head.png");
+}
+.characterSelect_row:nth-of-type(2) .charCard:nth-of-type(2){
+	background-image: url("../images/characters/heads/LeiaOrgana_head.png");
+}
+.characterSelect_row:nth-of-type(2) .charCard:nth-of-type(3){
+	background-image: url("../images/characters/heads/padmeAmidala_head.png");
+}
+.characterSelect_row:nth-of-type(2) .charCard:nth-of-type(4){
+	background-image: url("../images/characters/heads/obiWan_head.png");
+}
+
+.charCard_inner{
+	height: 30%;
+	width: 0%;
+	margin:0 auto;
+	position: absolute;
+	bottom: 1vh;
+	opacity: 0;
+	transition: margin .5s ease, opacity 1s ease, width .5s ease;
+	text-shadow: 1px 0px 2px #000, -1px 0px 2px #000;
+	color: #fff;
+	margin-left: -25%;
+}
+.charCard:focus .charCard_inner{
+	opacity: 1;
+	width: 100%;
+	margin-left: 0px;
+}
+.charCard_inner div{
+	transition: all .2s ease;
+}
+.charStat_HP {
+	height: 30%;
+	width: 100%;
+	background-color: red;
+	/*margin-bottom: 1vh;*/
+	box-shadow: 2px 2px 10px #000, -2px 2px 10px #000,
+		inset 1px 0px 20px rgba(255,255,255,0.5), inset -1px 0px 20px rgba(255,255,255,0.5);
+	border-radius: 5px;
+}
+
+.charStat_AP{
+	height: 30%;	
+	width: 100%;
+	background-color: green;
+	/*margin-bottom: 1vh;*/
+	box-shadow: 2px 2px 10px #000, -2px 2px 10px #000,
+		inset 1px 0px 20px rgba(255,255,255,0.5), inset -1px 0px 20px rgba(255,255,255,0.5);
+	border-radius: 5px;
+}
+.charStat_CAP{
+	height: 30%;
+	width: 100%;
+	background-color: blue;
+	box-shadow: 2px 2px 10px #000, -2px 2px 10px #000,
+		inset 1px 0px 20px rgba(255,255,255,0.5), inset -1px 0px 20px rgba(255,255,255,0.5);
+	border-radius: 5px;
+}
+
+@media screen and (min-width : 750px) {
+	.charStat_HP:before{ content: "HP: " }
+	.charStat_AP:before{ content: "AP: " }
+	.charStat_CAP:before{ content: "C: " }
+}
+
+
+
+
+/*/////////////////////////////////////////////*/
+/* CHARACTER SELECTION*/
+/*/////////////////////////////////////////////*/
+
+.selectedCharacters {
+	width: 100%;
+	height: 35vh;
+	position: absolute;
+	bottom: 0px;
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+	box-shadow: inset 0px 2px 100px #000, inset 0px 2px 100px #000;
+	opacity: 0;
+	-webkit-animation: charSelect_IN_anim 5s linear forwards var(--selectionTextTime);
+  	animation: charSelect_IN_anim 5s linear forwards var(--selectionTextTime);
+}
+
+#p1,#p2{
+	width: 100%;
+	text-align: center;
+	background-color: rgba(0,0,0,0.5);
+	border: 1vh inset rgba(105,111,135,0.9);
+	overflow: hidden;
+	position: relative;
+}
+#p1{border-right: 0px;}
+
+#p2{border-left: 0px;}
+
+#p1 img, #p2 img{
+	margin-top: 1vh;
+	max-width:80%;
+	max-height:80%;
+	-webkit-filter: drop-shadow(0px 0px 25px rgba(200,200,200,0.9));
+}
+#p1 p, #p2 p{
+	cursor: default;
+	margin: 0 auto;
+	position: absolute;
+	text-align: left;
+	bottom: 2vh;
+	z-index: 1;
+	font-size: 6vmin;
+	border-radius: 5px;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Poller One', cursive;
+	text-shadow: 1px 0px 30px #000, -1px 0px 30px #000, 1px 0px 1px #000, -1px 0px 1px #000;
+}
+#p1 p:nth-of-type(1){ 
+	left:5%; 
+	bottom: 10vh;
+	color: #67FF00;
+	-ms-transform: rotate(25deg); /* IE 9 */
+    -webkit-transform: rotate(25deg); /* Chrome, Safari, Opera */
+    transform: rotate(25deg);
+    z-index: 2;
+}
+#p2 p:nth-of-type(1){ 
+	right:5%; 
+	bottom: 10vh;
+	color: #ff0000;
+	-ms-transform: rotate(-25deg); /* IE 9 */
+    -webkit-transform: rotate(-25deg); /* Chrome, Safari, Opera */
+    transform: rotate(-25deg);
+    z-index: 2;
+}
+#p1 p:nth-of-type(2){ 
+	color: #ccc;
+	font-size: 3vmin;
+	width: 100%;
+	text-align: center;
+	border-radius: 0;
+	text-shadow: 1px 0px 10px #000, -1px 0px 10px #000, 1px 1px 10px #000, -1px 1px 10px #000;
+}
+#p2 p:nth-of-type(2){ 
+	color: #ccc;
+	font-size: 3vmin;
+	width: 100%;
+	text-align: center;
+	border-radius: 0;
+	text-shadow: 1px 0px 10px #000, -1px 0px 10px #000, 1px 1px 10px #000, -1px 1px 10px #000;
+}
+
+.selectedCharacters:after {
+	content: "VS";
+	text-align: center;
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	margin: 0 auto;
+	color: #fff;
+	font-family: 'Poller One', cursive;
+	top: 35%;
+	color:#444856;
+	text-shadow: 1px 0px 10px #000, -1px 0px 10px #000, 1px 1px 10px #000, -1px 1px 10px #000;
+	font-size: 10vmin;
+}
+
+#confirmButton{
+	position: absolute;
+	background-color: rgba(100,100,100,0.5);
+	width: 90%;
+	left: 5%;
+	bottom: 5vh;
+	margin: 0 auto;
+	font-size: 3vmin;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	border-radius: 10px;
+	opacity: .8;
+	color: #fff;
+	text-shadow: 1px 0px 10px #000, -1px 0px 10px #000, 1px 1px 10px #000, -1px 1px 10px #000;
+}
+#p1 #confirmButton{
+	color:#67FF00;
+}
+
+#p2 #confirmButton{
+	color:#ff0000;
+}
+
+
+@keyframes charSelect_IN_anim {
+  0%{ 
+  	opacity: 0;
+  	display: none;
+  }
+  10%,90% { 
+  	opacity: 1; 
+  }
+  100% {
+  	opacity: 1;
+  }
+}
+
+
+
+
+
+/*/////////////////////////////////////////////*/
+/*MISC ANIMATIONS*/
+/*/////////////////////////////////////////////*/
+
+.shake {
+  -webkit-animation: shake_anim 0.5s;
+  animation: shake_anim 0.5s;
+}
+
+@keyframes shake_anim {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}

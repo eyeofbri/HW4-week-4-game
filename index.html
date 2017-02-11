@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="./assets/javascript/game.js"></script>
+
+	<title>HW4-week-4-game </title>
+</head>
+<body>
+
+	<div id="gameContainer" class="no-touch">
+
+		<div id="gameTitle" class="introTitle_Animate_IN"></div>
+
+		<div id="gameBG_H">
+			<div></div>
+			<div></div>
+		</div>
+
+		<!-- <div class="slantedText_Wrapper">
+			<div class="slantedText_H_outer">   
+				<div class="slantedText_H_inner">
+					<div>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<div id="characterSelect_H" class="p1_Selector">
+			<div class="characterSelect_row">
+				<button class="charCard" data-content="Bobba Fett">
+					<div class="charCard_inner">
+						<div class="charStat_HP"></div>
+						<div class="charStat_AP"></div>
+						<div class="charStat_CAP"></div>
+					</div>
+				</button>
+				<button class="charCard" data-content="Chewbacca">
+					<div class="charCard_inner">
+						<div class="charStat_HP"></div>
+						<div class="charStat_AP"></div>
+						<div class="charStat_CAP"></div>
+					</div>
+				</button>
+				<button class="charCard" data-content="Darth Sidious">
+					<div class="charCard_inner">
+						<div class="charStat_HP"></div>
+						<div class="charStat_AP"></div>
+						<div class="charStat_CAP"></div>
+					</div>
+				</button>
+				<button class="charCard" data-content="Darth Vader">
+					<div class="charCard_inner">
+						<div class="charStat_HP"></div>
+						<div class="charStat_AP"></div>
+						<div class="charStat_CAP"></div>
+					</div>
+				</button>
+			</div>
+			<div class="characterSelect_row">
+				<button class="charCard" data-content="Luke Skywalker">
+					<div class="charCard_inner">
+						<div class="charStat_HP"></div>
+						<div class="charStat_AP"></div>
+						<div class="charStat_CAP"></div>
+					</div>
+				</button>
+				<button class="charCard" data-content="Leia Organa">
+					<div class="charCard_inner">
+						<div class="charStat_HP"></div>
+						<div class="charStat_AP"></div>
+						<div class="charStat_CAP"></div>
+					</div>
+				</button>
+				<button class="charCard" data-content="Padme Amidala">
+					<div class="charCard_inner">
+						<div class="charStat_HP"></div>
+						<div class="charStat_AP"></div>
+						<div class="charStat_CAP"></div>
+					</div>
+				</button>
+				<button class="charCard" data-content="Obi-Wan Kenobi">
+					<div class="charCard_inner">
+						<div class="charStat_HP"></div>
+						<div class="charStat_AP"></div>
+						<div class="charStat_CAP"></div>
+					</div>
+				</button>
+			</div>
+		</div>
+		<div class="selectedCharacters no-touch">
+			<div id="p1">
+				<img src="./assets/images/question.png" class="no-touch">
+				<p>p1</p>
+				<p>Name Here</p>
+				<button id="confirmButton" class="hide">confirm player?</button>
+			</div>
+			<div id="p2">
+				<img src="./assets/images/question.png" class="no-touch">
+				<p>p2</p>
+				<p>Name Here</p>
+				<button id="confirmButton" class="hide">confirm player?</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="alertText_Wrapper">
+		<div id="alertText"></div>
+	</div>
+
+</body>
+</html>
